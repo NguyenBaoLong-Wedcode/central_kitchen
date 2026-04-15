@@ -1,0 +1,1345 @@
+/* ==================== CK APP - Central Kitchen (thay thế Tailwind) ==================== */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+.ck-root * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ck-root {
+  font-family: "Manrope", sans-serif;
+  background: #0a0a0a;
+  color: #e8e8e8;
+  overflow-x: hidden;
+}
+
+.ck-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.ck-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulance type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes ck-slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ck-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ck-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes ck-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+.ck-animate-slide-in {
+  animation: ck-slideIn 0.5s ease-out;
+}
+.ck-animate-fade-in {
+  animation: ck-fadeIn 0.3s ease-out;
+}
+.ck-shake {
+  animation: ck-shake 0.5s ease-in-out;
+}
+
+.ck-min-h-screen {
+  min-height: 100vh;
+}
+.ck-flex {
+  display: flex;
+}
+.ck-flex-col {
+  flex-direction: column;
+}
+.ck-items-center {
+  align-items: center;
+}
+.ck-justify-center {
+  justify-content: center;
+}
+.ck-justify-between {
+  justify-content: space-between;
+}
+.ck-flex-1 {
+  flex: 1;
+}
+.ck-gap-1 {
+  gap: 0.25rem;
+}
+.ck-gap-2 {
+  gap: 0.5rem;
+}
+.ck-gap-3 {
+  gap: 0.75rem;
+}
+.ck-gap-4 {
+  gap: 1rem;
+}
+.ck-gap-6 {
+  gap: 1.5rem;
+}
+.ck-gap-8 {
+  gap: 2rem;
+}
+
+.ck-p-1 {
+  padding: 0.25rem;
+}
+.ck-p-2 {
+  padding: 0.5rem;
+}
+.ck-p-3 {
+  padding: 0.75rem;
+}
+.ck-p-4 {
+  padding: 1rem;
+}
+.ck-p-6 {
+  padding: 1.5rem;
+}
+.ck-p-8 {
+  padding: 2rem;
+}
+.ck-p-10 {
+  padding: 2.5rem;
+}
+.ck-px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.ck-px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.ck-px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.ck-py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.ck-py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.ck-py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.ck-py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.ck-pt-4 {
+  padding-top: 1rem;
+}
+.ck-pt-6 {
+  padding-top: 1.5rem;
+}
+.ck-pb-4 {
+  padding-bottom: 1rem;
+}
+.ck-pr-2 {
+  padding-right: 0.5rem;
+}
+.ck-mb-1 {
+  margin-bottom: 0.25rem;
+}
+.ck-mb-2 {
+  margin-bottom: 0.5rem;
+}
+.ck-mb-3 {
+  margin-bottom: 0.75rem;
+}
+.ck-mb-4 {
+  margin-bottom: 1rem;
+}
+.ck-mb-6 {
+  margin-bottom: 1.5rem;
+}
+.ck-mb-8 {
+  margin-bottom: 2rem;
+}
+.ck-mb-10 {
+  margin-bottom: 2.5rem;
+}
+.ck-mt-8 {
+  margin-top: 2rem;
+}
+.ck-space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+.ck-space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+.ck-space-y-4 > * + * {
+  margin-top: 1rem;
+}
+.ck-space-y-5 > * + * {
+  margin-top: 1.25rem;
+}
+
+.ck-w-full {
+  width: 100%;
+}
+.ck-w-64 {
+  width: 16rem;
+}
+.ck-max-w-md {
+  max-width: 28rem;
+}
+.ck-max-w-2xl {
+  max-width: 42rem;
+}
+.ck-max-w-7xl {
+  max-width: 80rem;
+}
+.ck-h-fit {
+  height: fit-content;
+}
+
+.ck-relative {
+  position: relative;
+}
+.ck-absolute {
+  position: absolute;
+}
+.ck-fixed {
+  position: fixed;
+}
+.ck-sticky {
+  position: sticky;
+}
+.ck-inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.ck-top-0 {
+  top: 0;
+}
+.ck-left-0 {
+  left: 0;
+}
+.ck-left-4 {
+  left: 1rem;
+}
+.ck-right-2 {
+  right: 0.5rem;
+}
+.ck-top-2 {
+  top: 0.5rem;
+}
+.ck-z-10 {
+  z-index: 10;
+}
+.ck-z-40 {
+  z-index: 40;
+}
+.ck-z-50 {
+  z-index: 50;
+}
+
+.ck-text-xs {
+  font-size: 0.75rem;
+}
+.ck-text-sm {
+  font-size: 0.875rem;
+}
+.ck-text-lg {
+  font-size: 1.125rem;
+}
+.ck-text-xl {
+  font-size: 1.25rem;
+}
+.ck-text-2xl {
+  font-size: 1.5rem;
+}
+.ck-text-3xl {
+  font-size: 1.875rem;
+}
+.ck-text-4xl {
+  font-size: 2.25rem;
+}
+.ck-text-5xl {
+  font-size: 3rem;
+}
+.ck-font-medium {
+  font-weight: 500;
+}
+.ck-font-semibold {
+  font-weight: 600;
+}
+.ck-font-bold {
+  font-weight: 700;
+}
+.ck-font-black {
+  font-weight: 800;
+}
+.ck-text-white {
+  color: #fff;
+}
+.ck-text-gray-300 {
+  color: #d1d5db;
+}
+.ck-text-gray-400 {
+  color: #9ca3af;
+}
+.ck-text-gray-500 {
+  color: #6b7280;
+}
+.ck-text-gray-700 {
+  color: #374151;
+}
+.ck-text-red-400 {
+  color: #f87171;
+}
+.ck-text-empty-state {
+  color: #ef4444 !important;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  background: rgba(239, 68, 68, 0.08);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  display: inline-block;
+}
+.ck-text-green-400 {
+  color: #4ade80;
+}
+.ck-text-blue-400 {
+  color: #60a5fa;
+}
+.ck-text-yellow-400 {
+  color: #facc15;
+}
+.ck-text-orange-400 {
+  color: #fb923c;
+}
+.ck-text-orange-300 {
+  color: #fdba74;
+}
+.ck-text-purple-400 {
+  color: #c084fc;
+}
+.ck-text-center {
+  text-align: center;
+}
+.ck-uppercase {
+  text-transform: uppercase;
+}
+.ck-tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.ck-bg-black {
+  background: #000;
+}
+.ck-bg-gray-700 {
+  background: #374151;
+}
+.ck-bg-gray-800 {
+  background: #1f2937;
+}
+.ck-bg-gray-900 {
+  background: #111827;
+}
+.ck-bg-gray-900-50 {
+  background: rgba(17, 24, 39, 0.5);
+}
+.ck-bg-gray-900-70 {
+  background: rgba(17, 24, 39, 0.7);
+}
+.ck-bg-red-500-10 {
+  background: rgba(239, 68, 68, 0.1);
+}
+.ck-bg-blue-500-10 {
+  background: rgba(59, 130, 246, 0.1);
+}
+.ck-bg-yellow-500-10 {
+  background: rgba(234, 179, 8, 0.1);
+}
+.ck-bg-green-500-20 {
+  background: rgba(34, 197, 94, 0.2);
+}
+.ck-bg-red-500-20 {
+  background: rgba(239, 68, 68, 0.2);
+}
+.ck-bg-yellow-500-20 {
+  background: rgba(234, 179, 8, 0.2);
+}
+.ck-bg-blue-500-20 {
+  background: rgba(59, 130, 246, 0.2);
+}
+.ck-bg-orange-500-20 {
+  background: rgba(249, 115, 22, 0.2);
+}
+.ck-bg-gray-500-20 {
+  background: rgba(107, 114, 128, 0.2);
+}
+.ck-bg-orange-500 {
+  background: #f97316;
+}
+.ck-bg-red-500 {
+  background: #ef4444;
+}
+.ck-bg-green-600 {
+  background: #16a34a;
+}
+.ck-bg-orange-600 {
+  background: #ea580c;
+}
+.ck-bg-black-80 {
+  background: rgba(0, 0, 0, 0.8);
+}
+.ck-bg-white-10 {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ck-border-gray-600 {
+  border-color: #4b5563;
+}
+.ck-border-indigo-500 {
+  border-color: #6366f1;
+}
+.ck-border-amber-500 {
+  border-color: #f59e0b;
+}
+.ck-text-indigo-400 {
+  color: #818cf8;
+}
+.ck-text-amber-400 {
+  color: #fbbf24;
+}
+.ck-max-w-lg {
+  max-width: 32rem;
+}
+.ck-flex-wrap {
+  flex-wrap: wrap;
+}
+.ck-flex-shrink-0 {
+  flex-shrink: 0;
+}
+.ck-min-w-200 {
+  min-width: 200px;
+}
+.ck-rotate-90 {
+  transform: rotate(90deg);
+}
+.ck-transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.ck-transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.ck-bg-gradient-modal-edit {
+  background: linear-gradient(
+    to right,
+    rgba(49, 46, 129, 0.35),
+    rgba(88, 28, 135, 0.35)
+  );
+}
+.ck-bg-gradient-modal-swap {
+  background: linear-gradient(
+    to right,
+    rgba(120, 53, 15, 0.35),
+    rgba(124, 45, 18, 0.35)
+  );
+}
+
+.ck-bg-gradient-login {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #000 100%);
+}
+.ck-bg-gradient-card {
+  background: linear-gradient(
+    135deg,
+    rgba(31, 41, 55, 0.9) 0%,
+    rgba(17, 24, 39, 0.9) 100%
+  );
+}
+.ck-bg-gradient-card-solid {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+.ck-bg-gradient-header {
+  background: linear-gradient(to right, #111827, #1f2937);
+}
+.ck-bg-gradient-sidebar {
+  background: linear-gradient(to bottom, #111827, #000);
+}
+.ck-bg-gradient-stat {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+.ck-bg-gradient-logo {
+  background: linear-gradient(135deg, #ff6b35 0%, #ffd700 100%);
+}
+.ck-bg-gradient-btn-primary {
+  background: linear-gradient(to right, #f97316, #f59e0b);
+}
+.ck-bg-gradient-btn-admin {
+  background: linear-gradient(to right, #ef4444, #f43f5e);
+}
+.ck-bg-grid-pattern {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMjIiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxIDEuNzktNCAzLjk5OC00aDJjMi4yMDggMCAzLjk5OCAxLjc5IDMuOTk4IDR2MmMwIDIuMjEtMS43OSA0LTMuOTk4IDRoLTJjLTIuMjA4IDAtMy45OTgtMS43OS0zLjk5OC00di0yem0tMjQgMGMwLTIuMjEgMS43OS00IDMuOTk4LTRoMmMyLjIwOCAwIDMuOTk4IDEuNzkgMy45OTggNHYyYzAgMi4yMS0xLjc5IDQtMy45OTggNGgtMmMtMi4yMDggMC0zLjk5OC0xLjc5LTMuOTk4LTR2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=");
+  opacity: 0.2;
+}
+
+.ck-border {
+  border: 1px solid;
+}
+.ck-border-b {
+  border-bottom: 1px solid;
+}
+.ck-border-t {
+  border-top: 1px solid;
+}
+.ck-border-gray-700 {
+  border-color: #374151;
+}
+.ck-border-gray-800 {
+  border-color: #1f2937;
+}
+.ck-border-red-500-50 {
+  border-color: rgba(239, 68, 68, 0.5);
+}
+.ck-border-blue-500-30 {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.ck-border-yellow-500-30 {
+  border-color: rgba(234, 179, 8, 0.3);
+}
+
+.ck-rounded {
+  border-radius: 0.25rem;
+}
+.ck-rounded-lg {
+  border-radius: 0.5rem;
+}
+.ck-rounded-xl {
+  border-radius: 0.75rem;
+}
+.ck-rounded-2xl {
+  border-radius: 1rem;
+}
+.ck-rounded-3xl {
+  border-radius: 1.5rem;
+}
+.ck-rounded-full {
+  border-radius: 9999px;
+}
+
+.ck-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+.ck-shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+.ck-shadow-orange {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+.ck-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ck-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.ck-stat-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 1px solid #2a2a2a;
+  position: relative;
+  overflow: hidden;
+}
+.ck-stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b35, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.ck-stat-card:hover::before {
+  opacity: 1;
+}
+.ck-stat-card-active {
+  border: 2px solid #f97316 !important;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.3);
+}
+
+.ck-logo-icon {
+  background: linear-gradient(135deg, #ff6b35 0%, #ffd700 100%);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+.ck-select.ck-text-gray-500 {
+  color: #6b7280;
+}
+.ck-input:focus,
+.ck-select:focus,
+.ck-textarea:focus {
+  outline: none;
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Focus styles for modal inputs/selects */
+.ck-border-gray-600:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+select.ck-border-gray-600:focus {
+  border-color: #6366f1;
+}
+input.ck-border-gray-600:focus {
+  border-color: #6366f1;
+}
+
+.ck-btn:active {
+  transform: scale(0.98);
+}
+
+.ck-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.ck-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+.ck-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+.ck-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+.ck-sidebar-item {
+  position: relative;
+  transition: all 0.2s ease;
+}
+.ck-sidebar-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: linear-gradient(to bottom, #ff6b35, #ffd700);
+  transition: height 0.2s ease;
+  border-radius: 0 2px 2px 0;
+}
+.ck-sidebar-item.ck-active::before {
+  height: 60%;
+}
+
+.ck-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(17, 24, 39, 0.75) 50%,
+      rgba(0, 0, 0, 0.65) 100%
+    ),
+    url("https://png.pngtree.com/thumb_back/fw800/background/20251124/pngtree-chef-interacting-with-a-futuristic-holographic-interface-displaying-kitchen-data-and-image_20580627.webp")
+      center center / cover no-repeat;
+  background-attachment: scroll;
+}
+
+.ck-login-card {
+  max-width: 28rem;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.ck-login-box {
+  background: linear-gradient(
+    135deg,
+    rgba(31, 41, 55, 0.9) 0%,
+    rgba(17, 24, 39, 0.9) 100%
+  );
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  padding: 2.5rem;
+  border: 1px solid #374151;
+  animation: ck-slideIn 0.5s ease-out;
+}
+
+.ck-input-wrap {
+  position: relative;
+}
+.ck-input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+.ck-input {
+  width: 100%;
+  padding-left: 3rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background: rgba(17, 24, 39, 0.5);
+  border: 1px solid #374151;
+  border-radius: 0.75rem;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.ck-input::placeholder {
+  color: #6b7280;
+}
+
+.ck-btn-primary {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  transition: all 0.2s;
+  background: linear-gradient(to right, #f97316, #f59e0b);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.ck-btn-primary:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+}
+.ck-btn-primary:disabled {
+  background: #374151;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.ck-error-box {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 0.75rem;
+}
+
+.ck-grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.ck-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.ck-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.ck-grid-1-md-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.ck-grid-1-lg-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.ck-grid-1-lg-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .ck-grid-1-md-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ck-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .ck-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .ck-grid-1-lg-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ck-grid-1-lg-3 {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Phải cao hơn .ck-grain (9999) để header + dropdown (chuông, menu user) không bị lớp noise phủ lên */
+.ck-header {
+  background: linear-gradient(to right, #111827, #1f2937);
+  border-bottom: 1px solid #1f2937;
+  position: sticky;
+  top: 0;
+  z-index: 10020;
+}
+
+/* Badge "Admin" — nổi bật, thể hiện đây là trang Admin */
+.admin-page-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #0f766e, #0d9488);
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.4);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+}
+
+.ck-sidebar {
+  width: 16rem;
+  background: linear-gradient(to bottom, #111827, #000);
+  border-right: 1px solid #1f2937;
+  min-height: calc(100vh - 73px);
+  position: sticky;
+  top: 73px;
+}
+
+.ck-sidebar-nav {
+  padding: 1rem;
+}
+.ck-sidebar-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  text-align: left;
+}
+.ck-sidebar-btn:hover {
+  background: rgba(31, 41, 55, 0.5);
+  color: #e5e7eb;
+}
+.ck-sidebar-btn.ck-active {
+  background: linear-gradient(
+    to right,
+    rgba(249, 115, 22, 0.2),
+    rgba(245, 158, 11, 0.2)
+  );
+  color: #fb923c;
+}
+
+.ck-main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 73px);
+}
+
+.ck-table-wrap {
+  overflow-x: auto;
+}
+.ck-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ck-table th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(17, 24, 39, 0.5);
+  border-bottom: 1px solid #374151;
+}
+.ck-table th.ck-text-center {
+  text-align: center;
+}
+.ck-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #1f2937;
+  color: #e5e7eb;
+}
+.ck-table tr:hover {
+  background: rgba(31, 41, 55, 0.5);
+}
+
+.ck-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ck-badge-green {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+.ck-badge-red {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+.ck-badge-yellow {
+  background: rgba(234, 179, 8, 0.2);
+  color: #facc15;
+}
+.ck-badge-blue {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+.ck-badge-purple {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+}
+
+.ck-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.ck-modal-box {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  border: 1px solid #374151;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.ck-icon-box {
+  width: 3.5rem;
+  height: 3.5rem;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.ck-icon-box > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ck-icon-box-sm {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.ck-icon-box-blue {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+}
+.ck-icon-box-yellow {
+  background: linear-gradient(135deg, #eab308, #f59e0b);
+}
+.ck-icon-box-green {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+}
+.ck-icon-box-purple {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+}
+.ck-icon-box-red {
+  background: linear-gradient(135deg, #ef4444, #f43f5e);
+}
+
+.ck-order-card {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border: 1px solid #374151;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.ck-sticky-top-24 {
+  position: sticky;
+  top: 6rem;
+}
+
+.ck-demo-box {
+  background: rgba(17, 24, 39, 0.7);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.ck-divider {
+  border-top: 1px solid #374151;
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.ck-bell-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: #ef4444;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.ck-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6, #a855f7);
+}
+
+.ck-overflow-y-auto {
+  overflow-y: auto;
+}
+.ck-overflow-x-auto {
+  overflow-x: auto;
+}
+.ck-max-h-96 {
+  max-height: 24rem;
+}
+.ck-max-h-600 {
+  max-height: 600px;
+}
+
+.ck-w-14-h-14 {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.ck-w-12-h-12 {
+  width: 3rem;
+  height: 3rem;
+}
+.ck-w-10-h-10 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Bổ sung thêm các class Grid và Animation cho Dashboard */
+.ck-grid {
+  display: grid;
+}
+.ck-grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.ck-grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.ck-col-span-1 {
+  grid-column: span 1 / span 1;
+}
+.ck-col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+/* Hiệu ứng nhấp nháy cho đèn cảnh báo đỏ */
+@keyframes ck-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.ck-animate-pulse {
+  animation: ck-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.ck-inline-block {
+  display: inline-block;
+}
+.ck-inline {
+  display: inline;
+}
+.ck-mr-1 {
+  margin-right: 0.25rem;
+}
+
+/* ========== Chế độ sáng (Admin) — class ck-theme-light trên .ck-root ========== */
+.ck-root.ck-theme-light {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+.ck-root.ck-theme-light .ck-grain {
+  opacity: 0.02;
+}
+.ck-root.ck-theme-light .ck-header {
+  background: linear-gradient(to right, #e2e8f0, #f8fafc);
+  border-bottom-color: #cbd5e1;
+}
+.ck-root.ck-theme-light .ck-text-white {
+  color: #0f172a !important;
+}
+.ck-root.ck-theme-light .ck-text-gray-400 {
+  color: #64748b !important;
+}
+.ck-root.ck-theme-light .ck-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.ck-root.ck-theme-light .ck-theme-toggle:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.ck-root.ck-theme-light .ingredient-polished {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface2: #f1f5f9;
+  --surface3: #e2e8f0;
+  --border: #cbd5e1;
+  --border2: #94a3b8;
+  --text: #0f172a;
+  --text2: #334155;
+  --text3: #64748b;
+  /* Pill filter đang chọn: nền đậm — chữ phải sáng */
+  --accent: #0f172a;
+  --filt-active-text: #f8fafc;
+}
+.ck-root.ck-theme-light .ingredient-polished .import-history-items {
+  background: #f1f5f9;
+}
+.ck-root.ck-theme-light .ingredient-polished .import-history-ticket--rich {
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.07);
+}
+.ck-root.ck-theme-light .ingredient-polished .import-history-card__ticket-id {
+  color: #0d9488;
+}
+.ck-root.ck-theme-light .ingredient-polished .import-history-card__icon {
+  color: #0f766e;
+  border-color: rgba(13, 148, 136, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(13, 148, 136, 0.15),
+    rgba(13, 148, 136, 0.06)
+  );
+}
+.ck-root.ck-theme-light .ck-modal-overlay {
+  background: rgba(15, 23, 42, 0.45);
+}
+.ck-root.ck-theme-light .ck-modal-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  border-color: #cbd5e1;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+}
+
+/* Trang Manager: modal/popup dùng inline nền tối — ép sáng khi theme light */
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .ck-modal-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a;
+}
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .form-header,
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .form-actions {
+  border-color: #e2e8f0 !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .form-header h3,
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .form-body h3 {
+  color: #0f172a !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .field label {
+  color: #64748b !important;
+}
+.ck-root.ck-theme-light[data-manager-page]
+  .ck-modal-overlay
+  .incident-card-item {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+.ck-root.ck-theme-light[data-manager-page]
+  .ck-modal-overlay
+  .product-detail-value {
+  color: #334155 !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .section-label {
+  color: #64748b !important;
+  border-color: #e2e8f0 !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay .btn-close {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay table thead th {
+  color: #64748b !important;
+  border-color: #e2e8f0 !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .ck-modal-overlay table tbody td {
+  color: #334155 !important;
+  border-color: #e2e8f0 !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .manager-note-popup {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12) !important;
+}
+.ck-root.ck-theme-light[data-manager-page] .manager-note-popup h4 {
+  color: #0f172a !important;
+}
+.ck-root.ck-theme-light[data-manager-page]
+  .manager-note-popup
+  .manager-note-popup__note-box {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+.ck-root.ck-theme-light[data-manager-page]
+  .manager-note-popup
+  .manager-note-popup__note-text {
+  color: #334155 !important;
+}
+
+/* Modal form (ingredient-form): header nền tối còn sót khi theme sáng Manager */
+.ck-root.ck-theme-light[data-manager-page]
+  .ingredient-form-modal.manager-ui
+  .ingredient-form-box
+  .form-header {
+  background: #f8fafc !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+.ck-root.ck-theme-light[data-manager-page]
+  .ingredient-form-modal.manager-ui
+  .ingredient-form-box
+  .form-header
+  h3 {
+  color: #0f172a !important;
+}
+
+/* Select trong .field — admin-theme (background #1f2937) thắng utility Tailwind */
+.ck-root.ck-theme-light[data-manager-page]
+  .ingredient-form-modal
+  .ingredient-form-box
+  .form-body
+  .field
+  select {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+  color-scheme: light;
+}
+.ck-root.ck-theme-light[data-manager-page]
+  .ingredient-form-modal
+  .ingredient-form-box
+  .form-body
+  .field
+  select:focus {
+  border-color: #14b8a6 !important;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15) !important;
+}
+.ck-root.ck-theme-light[data-manager-page]
+  .ingredient-form-modal
+  .ingredient-form-box
+  .form-body
+  .field
+  select
+  option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.ck-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.ck-theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}

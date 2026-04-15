@@ -1,0 +1,224 @@
+/* NotificationBell — chuông + popup góc phải */
+
+@keyframes nb-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nb-root {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.nb-trigger {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border, #e0d8cc);
+  background: var(--cream, #faf8f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  color: var(--ink3, #8a7d70);
+}
+
+.nb-trigger[aria-expanded="true"] {
+  background: var(--parchment, #f3f0e6);
+}
+
+.nb-root.nb-variant-dark .nb-trigger {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+}
+
+.nb-root.nb-variant-dark .nb-trigger[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nb-badge-count {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 18px;
+  text-align: center;
+  border: 2px solid var(--cream, #faf8f3);
+  box-sizing: border-box;
+}
+
+.nb-root.nb-variant-dark .nb-badge-count {
+  border-color: #111827;
+}
+
+.nb-panel {
+  background: var(--white, #fff);
+  border: 1.5px solid var(--border, #e0d8cc);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(26, 24, 16, 0.16);
+  overflow: hidden;
+  animation: nb-pop 0.16s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  max-height: min(420px, 72vh);
+}
+
+.nb-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #e0d8cc);
+  background: var(--parchment, #f3f0e6);
+  flex-shrink: 0;
+}
+
+.nb-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, #1a1410);
+  margin: 0;
+}
+
+.nb-mark-all {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0d9488;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.nb-mark-all:hover:not(:disabled) {
+  background: rgba(13, 148, 136, 0.1);
+}
+
+.nb-mark-all:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nb-list {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 120px;
+}
+
+.nb-empty,
+.nb-loading {
+  padding: 28px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink4, #9a8f85);
+}
+
+.nb-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid var(--border, #e0d8cc);
+  background: var(--white, #fff);
+  padding: 12px 14px 12px 16px;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: background 0.12s;
+}
+
+.nb-item:last-child {
+  border-bottom: none;
+}
+
+.nb-item:hover {
+  background: var(--parchment, #f9f7f2);
+}
+
+.nb-item.nb-unread {
+  background: rgba(59, 130, 246, 0.06);
+  font-weight: 600;
+}
+
+.nb-item.nb-unread .nb-item-title {
+  font-weight: 700;
+}
+
+.nb-type-bar {
+  width: 4px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  min-height: 36px;
+  align-self: stretch;
+}
+
+.nb-type-info {
+  background: #3b82f6;
+}
+.nb-type-success {
+  background: #22c55e;
+}
+.nb-type-warning {
+  background: #f59e0b;
+}
+.nb-type-urgent {
+  background: #ef4444;
+}
+.nb-type-default {
+  background: #94a3b8;
+}
+
+.nb-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.nb-item-title {
+  font-size: 13px;
+  color: var(--ink, #1a1410);
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+
+.nb-item-msg {
+  font-size: 12px;
+  color: var(--ink3, #6b5f54);
+  line-height: 1.45;
+  margin: 0;
+  font-weight: 400;
+}
+
+.nb-item-meta {
+  font-size: 11px;
+  color: var(--ink4, #9a8f85);
+  margin-top: 6px;
+}
+
+.nb-error {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border-bottom: 1px solid #fecaca;
+}

@@ -1,0 +1,1383 @@
+/**
+ * Phân hệ Quản lý — scope: .manager-ui
+ * Tiền tố mgr- = manager UI (tránh trùng .btn / .card toàn cục).
+ */
+
+.manager-ui {
+  --mgr-radius: 16px;
+  --mgr-radius-sm: 12px;
+  --mgr-teal-dim: rgba(20, 184, 166, 0.12);
+  --mgr-glow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  /* Chrome tối — override ở .ck-root.ck-theme-light .manager-ui */
+  --mgr-toolbar-inset: rgba(255, 255, 255, 0.04);
+  --mgr-input-date-bg: rgba(17, 24, 39, 0.85);
+  --mgr-chart-bg: rgba(17, 24, 39, 0.35);
+  --mgr-chart-bubble-bg: linear-gradient(180deg, #374151, #1f2937);
+  --mgr-search-bar-bg: rgba(17, 24, 39, 0.6);
+  --mgr-search-btn-bg: rgba(55, 65, 81, 0.9);
+  --mgr-search-btn-bg-hover: rgba(75, 85, 99, 0.95);
+  --mgr-empty-bg: rgba(17, 24, 39, 0.35);
+  --mgr-strip-item-bg: rgba(31, 41, 55, 0.85);
+  --mgr-icon-btn-bg: rgba(17, 24, 39, 0.6);
+  --mgr-config-card-bg: rgba(31, 41, 55, 0.75);
+  --mgr-table-head-bg: rgba(0, 0, 0, 0.25);
+  --mgr-table-row-border: rgba(75, 85, 99, 0.45);
+  --mgr-table-row-hover: rgba(255, 255, 255, 0.03);
+  --mgr-panel-head-bg: rgba(0, 0, 0, 0.12);
+  --mgr-aside-top: rgba(55, 65, 81, 0.35);
+  --mgr-store-card-foot-border: rgba(75, 85, 99, 0.6);
+  --mgr-empty-border: rgba(75, 85, 99, 0.55);
+  --mgr-row-bg: rgba(31, 41, 55, 0.65);
+  --mgr-row-border: rgba(75, 85, 99, 0.5);
+  --mgr-row-hover-bg: rgba(55, 65, 81, 0.55);
+  --mgr-stocktake-input-bg: rgba(15, 23, 42, 0.6);
+  --mgr-stocktake-input-text: #e2e8f0;
+  --mgr-stocktake-input-border: rgba(55, 65, 81, 0.8);
+  --mgr-stocktake-note-text: #d1d5db;
+  --mgr-pagination-row-bg: #0d1117;
+  --mgr-btn-secondary-bg: #1f2937;
+  --mgr-btn-secondary-text: #9ca3af;
+  --mgr-btn-secondary-border: #374151;
+}
+
+/* —— Tiêu đề section —— */
+.manager-ui .mgr-section {
+  margin-bottom: 1.5rem;
+}
+.manager-ui .mgr-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.manager-ui .mgr-section-head__eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal, #2dd4bf);
+  margin-bottom: 6px;
+}
+.manager-ui .mgr-section-head__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text, #f9fafb);
+  line-height: 1.2;
+  margin: 0;
+}
+.manager-ui .mgr-section-head__sub {
+  font-size: 13px;
+  color: var(--text3, #9ca3af);
+  margin-top: 6px;
+  max-width: 42rem;
+  line-height: 1.45;
+}
+
+/* —— Toolbar (lọc ngày, nút) —— */
+.manager-ui .mgr-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface, #1f2937);
+  border: 1.5px solid var(--border, #4b5563);
+  border-radius: var(--mgr-radius-sm);
+  box-shadow: inset 0 1px 0 var(--mgr-toolbar-inset);
+}
+.manager-ui .mgr-toolbar__grow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.manager-ui .mgr-input-date {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border, #4b5563);
+  background: var(--mgr-input-date-bg);
+  color: var(--text, #f9fafb);
+  font-size: 12px;
+  font-family: var(--fm, "JetBrains Mono", monospace);
+  outline: none;
+  color-scheme: dark;
+}
+.manager-ui .mgr-input-date:focus {
+  border-color: var(--teal, #14b8a6);
+  box-shadow: 0 0 0 2px var(--mgr-teal-dim);
+}
+.manager-ui .mgr-toolbar-sep {
+  color: var(--text3, #6b7280);
+  font-weight: 700;
+}
+
+/* —— Nút —— */
+.manager-ui .mgr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--mgr-radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--ff, inherit);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+  white-space: nowrap;
+}
+.manager-ui .mgr-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+.manager-ui .mgr-btn--primary {
+  background: linear-gradient(135deg, #0f766e, #0d9488);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.35);
+}
+.manager-ui .mgr-btn--primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(13, 148, 136, 0.45);
+}
+.manager-ui .mgr-btn--green {
+  background: linear-gradient(135deg, #15803d, #22c55e);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
+}
+.manager-ui .mgr-btn--green:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.manager-ui .mgr-btn--amber {
+  background: linear-gradient(135deg, #c2410c, #ea580c);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28);
+}
+.manager-ui .mgr-btn--amber:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.manager-ui .mgr-btn--ghost {
+  background: var(--surface2, #374151);
+  color: var(--text2, #d1d5db);
+  border-color: var(--border, #4b5563);
+}
+.manager-ui .mgr-btn--ghost:hover:not(:disabled) {
+  color: var(--text, #fff);
+  border-color: var(--border2, #6b7280);
+}
+
+/* —— Thẻ KPI —— */
+.manager-ui .mgr-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 1200px) {
+  .manager-ui .mgr-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .manager-ui .mgr-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.manager-ui .mgr-stat-card {
+  position: relative;
+  padding: 20px 18px;
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    var(--surface, #1f2937) 48%
+  );
+  overflow: hidden;
+  box-shadow: var(--mgr-glow);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.manager-ui .mgr-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(45, 212, 191, 0.35);
+}
+.manager-ui .mgr-stat-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  opacity: 0.95;
+}
+.manager-ui .mgr-stat-card--0::before {
+  background: linear-gradient(180deg, #f97316, #ea580c);
+}
+.manager-ui .mgr-stat-card--1::before {
+  background: linear-gradient(180deg, #a78bfa, #7c3aed);
+}
+.manager-ui .mgr-stat-card--2::before {
+  background: linear-gradient(180deg, #2dd4bf, #0d9488);
+}
+.manager-ui .mgr-stat-card--3::before {
+  background: linear-gradient(180deg, #f87171, #dc2626);
+}
+.manager-ui .mgr-stat-card__label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3, #9ca3af);
+  margin-bottom: 10px;
+}
+.manager-ui .mgr-stat-card__value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text, #f9fafb);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.manager-ui .mgr-stat-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.manager-ui .mgr-delta {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+.manager-ui .mgr-delta--up {
+  background: rgba(34, 197, 94, 0.18);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+.manager-ui .mgr-delta--down {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+.manager-ui .mgr-delta-hint {
+  font-size: 11px;
+  color: var(--text3, #6b7280);
+}
+
+/* —— Panel / card lớn —— */
+.manager-ui .mgr-panel {
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: var(--surface, #1f2937);
+  overflow: hidden;
+  box-shadow: var(--mgr-glow);
+}
+.manager-ui .mgr-panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border, #4b5563);
+  background: var(--mgr-panel-head-bg);
+}
+.manager-ui .mgr-panel__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text, #f9fafb);
+}
+.manager-ui .mgr-panel__hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--text3, #9ca3af);
+  font-family: var(--fm, monospace);
+}
+.manager-ui .mgr-panel__body {
+  padding: 16px 20px 20px;
+}
+
+/* —— Biểu đồ cột —— */
+.manager-ui .mgr-chart {
+  min-height: 280px;
+  margin-top: 12px;
+  padding: 12px 10px 8px;
+  border-radius: var(--mgr-radius-sm);
+  border: 1.5px dashed rgba(75, 85, 99, 0.65);
+  background:
+    linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: var(--mgr-chart-bg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6px;
+  overflow: hidden;
+}
+.manager-ui .mgr-chart__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  justify-content: flex-end;
+  position: relative;
+  padding-top: 52px;
+}
+.manager-ui .mgr-chart__bubble {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 68px;
+  min-height: 46px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--mgr-chart-bubble-bg);
+  border: 1px solid var(--border, #4b5563);
+  border-radius: 10px;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.manager-ui .mgr-chart__bubble-val {
+  font-size: 10px;
+  font-weight: 800;
+  color: #5eead4;
+  text-align: center;
+  line-height: 1.2;
+  font-family: var(--fm, monospace);
+}
+.manager-ui .mgr-chart__bubble-sub {
+  font-size: 9px;
+  color: var(--text3, #9ca3af);
+  margin-top: 2px;
+}
+.manager-ui .mgr-chart__bar-wrap {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 0;
+}
+.manager-ui .mgr-chart__bar {
+  width: 100%;
+  max-width: 42px;
+  border-radius: 6px 6px 2px 2px;
+  min-height: 0;
+  background: linear-gradient(180deg, #2dd4bf 0%, #0f766e 100%);
+  box-shadow:
+    0 -6px 24px rgba(13, 148, 136, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: height 0.35s ease;
+}
+.manager-ui .mgr-chart__axis {
+  width: 100%;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border, #4b5563);
+  text-align: center;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.manager-ui .mgr-chart__axis-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text2, #d1d5db);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  padding: 0 2px;
+}
+
+/* —— Danh sách phụ (top SP) —— */
+.manager-ui .mgr-mini-panel {
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: var(--surface, #1f2937);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--mgr-glow);
+  min-height: 0;
+}
+.manager-ui .mgr-mini-panel__title {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text, #f9fafb);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.manager-ui .mgr-mini-panel__title-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--mgr-teal-dim);
+  color: var(--teal-text, #5eead4);
+  letter-spacing: 0.06em;
+}
+.manager-ui .mgr-mini-panel__scroll {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 200px;
+  padding-right: 6px;
+}
+.manager-ui .mgr-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--mgr-radius-sm);
+  border: 1px solid var(--mgr-row-border);
+  background: var(--mgr-row-bg);
+  margin-bottom: 8px;
+  transition:
+    transform 0.15s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.manager-ui .mgr-row:last-child {
+  margin-bottom: 0;
+}
+
+.ck-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.ck-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.manager-ui .mgr-row:hover {
+  transform: translateY(-1px);
+  border-color: rgba(45, 212, 191, 0.35);
+  background: var(--mgr-row-hover-bg);
+}
+.manager-ui .mgr-row--alert {
+  border-color: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.06);
+}
+.manager-ui .mgr-row--alert:hover {
+  border-color: rgba(239, 68, 68, 0.45);
+}
+.manager-ui .mgr-row__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text, #f9fafb);
+  margin: 0 0 4px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.manager-ui .mgr-row__meta {
+  font-size: 11px;
+  color: #60a5fa;
+  font-family: var(--fm, monospace);
+}
+.manager-ui .mgr-row--alert .mgr-row__meta {
+  color: #f87171;
+}
+.manager-ui .mgr-row__val {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text, #fff);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+.manager-ui .mgr-row--alert .mgr-row__val {
+  color: #fca5a5;
+}
+
+/* —— Lưới KPI + sidebar —— */
+.manager-ui .mgr-kpi-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+@media (max-width: 1100px) {
+  .manager-ui .mgr-kpi-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Ô tìm kiếm —— */
+.manager-ui .mgr-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+.manager-ui .mgr-search-bar {
+  display: flex;
+  flex: 1;
+  min-width: 220px;
+  border-radius: var(--mgr-radius-sm);
+  overflow: hidden;
+  border: 1.5px solid var(--border, #4b5563);
+  background: var(--mgr-search-bar-bg);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.manager-ui .mgr-search-bar:focus-within {
+  border-color: var(--teal, #14b8a6);
+  box-shadow: 0 0 0 3px var(--mgr-teal-dim);
+}
+.manager-ui .mgr-search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text, #fff);
+  padding: 12px 16px;
+  font-size: 14px;
+  outline: none;
+}
+.manager-ui .mgr-search-bar input::placeholder {
+  color: var(--text3, #6b7280);
+}
+.manager-ui .mgr-search-bar button {
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  border-left: 1px solid var(--border, #4b5563);
+  background: var(--mgr-search-btn-bg);
+  color: var(--teal-text, #5eead4);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.manager-ui .mgr-search-bar button:hover {
+  background: var(--mgr-search-btn-bg-hover);
+}
+.manager-ui .mgr-search-bar--rose:focus-within {
+  border-color: rgba(244, 63, 94, 0.65);
+  box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.12);
+}
+.manager-ui .mgr-search-bar--rose button {
+  color: #fb7185;
+}
+.manager-ui .mgr-search-bar--amber:focus-within {
+  border-color: rgba(245, 158, 11, 0.65);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12);
+}
+.manager-ui .mgr-search-bar--amber button {
+  color: #fbbf24;
+}
+.manager-ui .mgr-search-bar--orange:focus-within {
+  border-color: rgba(249, 115, 22, 0.65);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+}
+.manager-ui .mgr-search-bar--orange button {
+  color: #fb923c;
+}
+.manager-ui .mgr-select {
+  padding: 12px 16px;
+  border-radius: var(--mgr-radius-sm);
+  border: 1.5px solid var(--border, #4b5563);
+  background: var(--surface, #1f2937);
+  color: var(--text, #fff);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+.manager-ui .mgr-select:focus {
+  border-color: var(--teal, #14b8a6);
+}
+
+/* —— Bảng —— */
+.manager-ui .mgr-table-wrap {
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: var(--surface, #1f2937);
+  overflow: hidden;
+  box-shadow: var(--mgr-glow);
+}
+.manager-ui .mgr-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.manager-ui .mgr-table-wrap thead th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3, #9ca3af);
+  background: var(--mgr-table-head-bg);
+  border-bottom: 1px solid var(--border, #4b5563);
+}
+.manager-ui .mgr-table-wrap tbody td {
+  padding: 14px 16px;
+  font-size: 13px;
+  border-top: 1px solid var(--mgr-table-row-border);
+  vertical-align: middle;
+}
+.manager-ui .mgr-table-wrap tbody tr {
+  transition: background 0.15s ease;
+}
+.manager-ui .mgr-table-wrap tbody tr:hover {
+  background: var(--mgr-table-row-hover);
+}
+.manager-ui .mgr-table-wrap tbody tr.mgr-tr--active {
+  background: rgba(20, 184, 166, 0.08);
+  box-shadow: inset 3px 0 0 #14b8a6;
+}
+.manager-ui .mgr-table-wrap tbody tr.mgr-tr--active-orange {
+  background: rgba(249, 115, 22, 0.08);
+  box-shadow: inset 3px 0 0 #f97316;
+}
+.manager-ui .mgr-mono-muted {
+  font-family: var(--fm, monospace);
+  font-size: 12px;
+  color: var(--text3, #9ca3af);
+}
+.manager-ui .mgr-cell-strong {
+  font-weight: 700;
+  color: var(--text, #fff);
+}
+
+/* —— Pill trạng thái —— */
+.manager-ui .mgr-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.manager-ui .mgr-pill--ok {
+  background: rgba(34, 197, 94, 0.15);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+.manager-ui .mgr-pill--warn {
+  background: rgba(234, 179, 8, 0.15);
+  color: #fde047;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+}
+.manager-ui .mgr-pill--danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+/* —— Empty state —— */
+.manager-ui .mgr-empty {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-radius: var(--mgr-radius);
+  border: 2px dashed var(--mgr-empty-border);
+  background: var(--mgr-empty-bg);
+  color: var(--text3, #9ca3af);
+}
+.manager-ui .mgr-empty__icon {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+  opacity: 0.85;
+}
+.manager-ui .mgr-empty__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text2, #d1d5db);
+  margin: 0 0 6px;
+}
+.manager-ui .mgr-empty__sub {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* —— Tóm tắt tồn kho (stats strip) —— */
+.manager-ui .mgr-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 900px) {
+  .manager-ui .mgr-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.manager-ui .mgr-strip-item {
+  padding: 14px 16px;
+  border-radius: var(--mgr-radius-sm);
+  border: 1px solid var(--border, #4b5563);
+  background: var(--mgr-strip-item-bg);
+}
+.manager-ui .mgr-strip-item__label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3, #9ca3af);
+  margin-bottom: 6px;
+}
+.manager-ui .mgr-strip-item__val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--text, #fff);
+}
+.manager-ui .mgr-strip-item--teal .mgr-strip-item__val {
+  color: #5eead4;
+}
+.manager-ui .mgr-strip-item--amber .mgr-strip-item__val {
+  color: #fcd34d;
+}
+.manager-ui .mgr-strip-item--red .mgr-strip-item__val {
+  color: #fca5a5;
+}
+
+/* —— Hero (kiểm kê) —— */
+.manager-ui .mgr-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: linear-gradient(
+    125deg,
+    rgba(13, 148, 136, 0.18) 0%,
+    var(--surface, #1f2937) 42%,
+    rgba(124, 58, 237, 0.08) 100%
+  );
+  box-shadow: var(--mgr-glow);
+  margin-bottom: 1.25rem;
+}
+.manager-ui .mgr-hero__title {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text, #fff);
+  letter-spacing: -0.02em;
+}
+.manager-ui .mgr-hero__sub {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text2, #d1d5db);
+  max-width: 36rem;
+  line-height: 1.5;
+}
+
+/* —— Panel phụ (form bên phải) —— */
+.manager-ui .mgr-aside {
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: linear-gradient(
+    180deg,
+    var(--mgr-aside-top),
+    var(--surface, #1f2937)
+  );
+  padding: 22px;
+  box-shadow: var(--mgr-glow);
+}
+.manager-ui .mgr-aside__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border, #4b5563);
+}
+.manager-ui .mgr-aside__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text, #fff);
+}
+.manager-ui .mgr-icon-btn {
+  width: 70px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--border, #4b5563);
+  background: var(--mgr-icon-btn-bg);
+  color: var(--text3, #9ca3af);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.manager-ui .mgr-icon-btn:hover {
+  color: var(--text, #fff);
+  border-color: rgba(45, 212, 191, 0.45);
+  background: rgba(45, 212, 191, 0.1);
+}
+
+/* Tự động căn giữa các nút trong mgr-action-group */
+.mgr-action-group {
+  display: flex;
+  justify-content: center; /* Căn giữa các nút */
+  align-items: center;
+  gap: 12px; /* Khoảng cách 12px giữa 2 nút */
+  /* Xóa margin cũ để không bị lệch */
+  transition: all 0.2s;
+
+  /* Hiệu ứng tàng hình của file CSS tàng hình cũ của bạn */
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Hiện hình khi hover như cũ */
+tr:hover .mgr-action-group {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* —— Thẻ cửa hàng franchise —— */
+.manager-ui .mgr-store-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1100px) {
+  .manager-ui .mgr-store-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .manager-ui .mgr-store-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.manager-ui .mgr-store-card {
+  position: relative;
+  padding: 22px;
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.03),
+    var(--surface, #1f2937)
+  );
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: var(--mgr-glow);
+}
+.manager-ui .mgr-store-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at 100% 0%,
+    rgba(239, 68, 68, 0.08),
+    transparent 45%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.manager-ui .mgr-store-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(239, 68, 68, 0.45);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(239, 68, 68, 0.15);
+}
+.manager-ui .mgr-store-card:hover::after {
+  opacity: 1;
+}
+.manager-ui .mgr-store-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  margin-bottom: 16px;
+}
+.manager-ui .mgr-store-card__name {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text, #fff);
+  letter-spacing: -0.02em;
+}
+.manager-ui .mgr-store-card__addr {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: var(--text3, #9ca3af);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.manager-ui .mgr-store-card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--mgr-store-card-foot-border);
+  font-size: 11px;
+}
+.manager-ui .mgr-store-card__cta {
+  font-weight: 700;
+  color: #fb7185;
+  transition: transform 0.2s ease;
+}
+.manager-ui .mgr-store-card:hover .mgr-store-card__cta {
+  transform: translateX(4px);
+}
+
+/* —— Split layout (bảng + aside) —— */
+.manager-ui .mgr-split {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.manager-ui .mgr-split__main {
+  flex: 1;
+  min-width: min(100%, 320px);
+  transition: flex-basis 0.3s ease;
+}
+
+/* —— Cài đặt hệ thống —— */
+.manager-ui .mgr-settings-hero {
+  padding: 24px 26px;
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border, #4b5563);
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.12),
+    var(--surface, #1f2937)
+  );
+  margin-bottom: 1.5rem;
+  box-shadow: var(--mgr-glow);
+}
+.manager-ui .mgr-settings-hero h3 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text, #fff);
+}
+.manager-ui .mgr-settings-hero p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text2, #d1d5db);
+  line-height: 1.5;
+}
+.manager-ui .mgr-config-card {
+  padding: 20px;
+  border-radius: var(--mgr-radius-sm);
+  border: 1px solid var(--border, #4b5563);
+  background: var(--mgr-config-card-bg);
+  transition:
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+.manager-ui .mgr-config-card:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+  transform: translateY(-2px);
+}
+.manager-ui .mgr-config-card__tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  margin-bottom: 12px;
+}
+.manager-ui .mgr-config-card__key {
+  font-size: 10px;
+  font-family: var(--fm, monospace);
+  color: var(--text3, #6b7280);
+  margin-bottom: 8px;
+}
+.manager-ui .mgr-config-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text2, #e5e7eb);
+  margin: 0 0 16px;
+  min-height: 20px;
+  text-transform: capitalize;
+}
+
+/* —— Giao diện sáng (cùng cây với .ck-root.ck-theme-light) —— */
+.ck-root.ck-theme-light .manager-ui {
+  --mgr-glow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  --mgr-teal-dim: rgba(13, 148, 136, 0.14);
+  --mgr-toolbar-inset: rgba(15, 23, 42, 0.04);
+  --mgr-input-date-bg: #ffffff;
+  --mgr-chart-bg: rgba(241, 245, 249, 0.9);
+  --mgr-chart-bubble-bg: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+  --mgr-search-bar-bg: #f1f5f9;
+  --mgr-search-btn-bg: #e2e8f0;
+  --mgr-search-btn-bg-hover: #cbd5e1;
+  --mgr-empty-bg: rgba(248, 250, 252, 0.95);
+  --mgr-empty-border: rgba(148, 163, 184, 0.55);
+  --mgr-strip-item-bg: #f1f5f9;
+  --mgr-icon-btn-bg: #f1f5f9;
+  --mgr-config-card-bg: #ffffff;
+  --mgr-table-head-bg: #f1f5f9;
+  --mgr-table-row-border: rgba(148, 163, 184, 0.45);
+  --mgr-table-row-hover: rgba(15, 23, 42, 0.045);
+  --mgr-panel-head-bg: rgba(241, 245, 249, 0.98);
+  --mgr-aside-top: rgba(148, 163, 184, 0.22);
+  --mgr-store-card-foot-border: rgba(148, 163, 184, 0.55);
+  --mgr-row-bg: #f8fafc;
+  --mgr-row-border: rgba(148, 163, 184, 0.55);
+  --mgr-row-hover-bg: #f1f5f9;
+  --mgr-stocktake-input-bg: #ffffff;
+  --mgr-stocktake-input-text: #0f172a;
+  --mgr-stocktake-input-border: #cbd5e1;
+  --mgr-stocktake-note-text: #0f172a;
+  --mgr-pagination-row-bg: #f1f5f9;
+  --mgr-btn-secondary-bg: #f1f5f9;
+  --mgr-btn-secondary-text: #475569;
+  --mgr-btn-secondary-border: #cbd5e1;
+}
+
+/* Pill / chữ màu — đủ tương phản trên nền sáng */
+.ck-root.ck-theme-light .manager-ui .mgr-pill--ok {
+  background: rgba(21, 128, 61, 0.14);
+  color: #166534;
+  border-color: rgba(21, 128, 61, 0.4);
+}
+.ck-root.ck-theme-light .manager-ui .mgr-pill--warn {
+  background: rgba(180, 83, 9, 0.14);
+  color: #9a3412;
+  border-color: rgba(180, 83, 9, 0.4);
+}
+.ck-root.ck-theme-light .manager-ui .mgr-pill--danger {
+  background: rgba(185, 28, 28, 0.12);
+  color: #b91c1c;
+  border-color: rgba(185, 28, 28, 0.35);
+}
+
+/* Kiểm kê kho — bảng & input theo theme */
+.manager-ui .mgr-stocktake-thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--mgr-table-head-bg);
+}
+.manager-ui .mgr-stocktake-th {
+  padding: 14px 18px;
+  text-align: left;
+  color: var(--text3);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.manager-ui .mgr-stocktake-data-row {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+.manager-ui .mgr-stocktake-data-row:hover {
+  background: var(--mgr-table-row-hover);
+}
+.manager-ui .mgr-stocktake-data-row.mgr-stocktake-row--warn {
+  background: rgba(239, 68, 68, 0.06);
+}
+.manager-ui .mgr-stocktake-data-row.mgr-stocktake-row--warn:hover {
+  background: rgba(239, 68, 68, 0.09);
+}
+.manager-ui .mgr-stocktake-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+.manager-ui .mgr-stocktake-name--warn {
+  color: #fca5a5;
+}
+.manager-ui .mgr-stocktake-stock-val {
+  font-family: var(--fm, monospace);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+}
+.manager-ui .mgr-stocktake-unit {
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 400;
+}
+.manager-ui .mgr-stocktake-input {
+  width: 130px;
+  background: var(--mgr-stocktake-input-bg);
+  color: var(--mgr-stocktake-input-text);
+  border: 1px solid var(--mgr-stocktake-input-border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+.manager-ui .mgr-stocktake-input:focus {
+  border-color: rgba(45, 212, 191, 0.55);
+  box-shadow: 0 0 0 3px var(--mgr-teal-dim);
+}
+.manager-ui .mgr-stocktake-input.mgr-stocktake-input--alert {
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.45);
+}
+.manager-ui .mgr-stocktake-input.mgr-stocktake-input--alert:focus {
+  border-color: rgba(239, 68, 68, 0.75);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+.manager-ui .mgr-stocktake-input--full {
+  width: 100%;
+  font-weight: 500;
+  color: var(--mgr-stocktake-note-text);
+}
+.manager-ui .mgr-stocktake-pagination-row td {
+  padding: 16px 18px;
+  border: none;
+  background: var(--mgr-pagination-row-bg);
+}
+
+.manager-ui .mgr-btn--secondary {
+  background: var(--mgr-btn-secondary-bg) !important;
+  color: var(--mgr-btn-secondary-text) !important;
+  border: 1px solid var(--mgr-btn-secondary-border) !important;
+  border-radius: 12px;
+}
+.manager-ui .mgr-btn--secondary:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+/* Lịch sử giao dịch franchise — theo ingredient-polished / theme */
+.manager-ui .mgr-franchise-history {
+  border-radius: var(--mgr-radius);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--mgr-glow);
+}
+.manager-ui .mgr-franchise-history__head {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+.manager-ui .mgr-franchise-history__title {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text2);
+}
+.manager-ui .mgr-franchise-history table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.manager-ui .mgr-franchise-history thead {
+  background: var(--mgr-table-head-bg);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text3);
+}
+.manager-ui .mgr-franchise-history th {
+  padding: 1.15rem 1.25rem;
+}
+.manager-ui .mgr-franchise-history tbody td {
+  padding: 1.15rem 1.25rem;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--mgr-table-row-border);
+  color: var(--text2);
+  vertical-align: middle;
+}
+.manager-ui .mgr-franchise-history tbody tr:hover {
+  background: var(--mgr-table-row-hover);
+}
+.manager-ui .mgr-franchise-empty {
+  text-align: center;
+  padding: 2.5rem 1rem !important;
+  font-style: italic;
+  color: var(--text3) !important;
+}
+.manager-ui .mgr-franchise-order-id {
+  font-family: var(--fm, monospace);
+  font-weight: 700;
+  color: #60a5fa;
+}
+.manager-ui .mgr-franchise-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.manager-ui .mgr-franchise-action-btn--view {
+  color: #60a5fa;
+}
+.manager-ui .mgr-franchise-action-btn--view:hover {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+.manager-ui .mgr-franchise-action-btn--danger {
+  color: #f87171;
+}
+.manager-ui .mgr-franchise-action-btn--danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+/* Phân trang — dùng biến theme (tránh nền #1f2937 cố định) */
+.manager-ui .mgr-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+.manager-ui .mgr-pagination__ellipsis {
+  color: var(--text3);
+  font-size: 13px;
+  padding: 0 4px;
+}
+.manager-ui .mgr-pagination__nav {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  background: var(--surface2);
+  color: var(--text);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+  font-family: var(--ff, inherit);
+}
+.manager-ui .mgr-pagination__nav:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: var(--mgr-glow);
+}
+.manager-ui .mgr-pagination__nav:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.manager-ui .mgr-pagination__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  background: var(--surface);
+  color: var(--text3);
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+  font-family: var(--ff, inherit);
+}
+.manager-ui button.mgr-pagination__page:hover {
+  transform: translateY(-2px);
+  background: var(--surface2);
+  color: var(--text);
+}
+.manager-ui .mgr-pagination__page--active {
+  font-weight: 800;
+  border: 2px solid var(--teal, #14b8a6);
+  background: var(--mgr-teal-dim);
+  color: var(--teal-text, #5eead4);
+  cursor: default;
+}
+.manager-ui span.mgr-pagination__page--active {
+  display: inline-flex;
+}
+
+.ck-root.ck-theme-light .manager-ui .mgr-pagination__page--active {
+  color: #0f766e;
+}
+
+.ck-root.ck-theme-light .manager-ui .mgr-input-date {
+  color-scheme: light;
+}
+
+.ck-root.ck-theme-light .manager-ui .mgr-chart__bubble-val {
+  color: #0d9488;
+}
+
+.ck-root.ck-theme-light .manager-ui .mgr-search-bar button {
+  color: #0f766e;
+}
